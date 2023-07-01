@@ -1,7 +1,7 @@
 (function () {
   let MenuTpl =
     '<div id="menu_{{_namespace}}_{{_name}}" class="menu">' +
-    '<img class="image" src="{{_image}}">' +
+    '<img class="image" src="{{{image}}}" />' +
     '<div class="head"><span>{{{title}}}</span></div>' +
     '<div class="menu-items">' +
     "{{#elements}}" +
@@ -19,7 +19,7 @@
   ESX_MENU.focus = [];
   ESX_MENU.pos = {};
 
-  ESX_MENU.open = function (namespace, name, image, data) {
+  ESX_MENU.open = function (namespace, name, data) {
     if (typeof ESX_MENU.opened[namespace] == "undefined") {
       ESX_MENU.opened[namespace] = {};
     }
@@ -40,7 +40,6 @@
 
     data._index = ESX_MENU.focus.length;
     data._namespace = namespace;
-    data._image = image;
     data._name = name;
 
     for (let i = 0; i < data.elements.length; i++) {
@@ -177,7 +176,7 @@
   window.onData = (data) => {
     switch (data.action) {
       case "openMenu": {
-        ESX_MENU.open(data.namespace, data.name, data.image, data.data);
+        ESX_MENU.open(data.namespace, data.name, data.data);
         break;
       }
 
@@ -224,7 +223,8 @@
               if (pos > 0) {
                 ESX_MENU.pos[focused.namespace][focused.name]--;
               } else {
-                ESX_MENU.pos[focused.namespace][focused.name] = menu.elements.length - 1;
+                ESX_MENU.pos[focused.namespace][focused.name] =
+                  menu.elements.length - 1;
               }
 
               let elem =
@@ -241,7 +241,9 @@
               ESX_MENU.change(focused.namespace, focused.name, elem);
               ESX_MENU.render();
 
-              $("#menu_" + focused.namespace + "_" + focused.name).find(".menu-item.selected")[0].scrollIntoView();
+              $("#menu_" + focused.namespace + "_" + focused.name)
+                .find(".menu-item.selected")[0]
+                .scrollIntoView();
             }
 
             break;
@@ -275,7 +277,9 @@
               ESX_MENU.change(focused.namespace, focused.name, elem);
               ESX_MENU.render();
 
-              $("#menu_" + focused.namespace + "_" + focused.name).find(".menu-item.selected")[0].scrollIntoView();
+              $("#menu_" + focused.namespace + "_" + focused.name)
+                .find(".menu-item.selected")[0]
+                .scrollIntoView();
             }
 
             break;
@@ -309,7 +313,9 @@
                   break;
               }
 
-              $("#menu_" + focused.namespace + "_" + focused.name).find(".menu-item.selected")[0].scrollIntoView();
+              $("#menu_" + focused.namespace + "_" + focused.name)
+                .find(".menu-item.selected")[0]
+                .scrollIntoView();
             }
 
             break;
@@ -349,7 +355,9 @@
                   break;
               }
 
-              $("#menu_" + focused.namespace + "_" + focused.name).find(".menu-item.selected")[0].scrollIntoView();
+              $("#menu_" + focused.namespace + "_" + focused.name)
+                .find(".menu-item.selected")[0]
+                .scrollIntoView();
             }
 
             break;

@@ -1,14 +1,13 @@
 local GUI, MenuType, OpenedMenus, CurrentNameSpace = {}, 'default', 0, nil
 GUI.Time = 0
 
-local function openMenu(namespace, name, image, data)
+local function openMenu(namespace, name, data)
     CurrentNameSpace = namespace
     OpenedMenus += 1
     SendNUIMessage({
         action = 'openMenu',
         namespace = namespace,
         name = name,
-        image = image,
         data = data
     })
 end
