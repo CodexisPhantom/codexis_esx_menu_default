@@ -8,14 +8,14 @@ Add in the data an image
 
 ```lua
 ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'test', {
-			title = 'Test',
-      image = 'links to a banner',
-			elements = {},
-		}, function(data, menu)
-      -- Your code
-		end, function(data, menu)
-      -- Your code
-		end)
+	title = 'Test',
+ 	image = 'links to a banner',
+  	elements = {},
+}, function(data, menu)
+	-- Your code
+ end, function(data, menu)
+ 	-- Your code
+end)
 ```
 
 # Installation
